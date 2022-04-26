@@ -160,8 +160,6 @@ void listarJobs(Job *jp){
     }
     jp = jp->seguinte;
  }
-
-
 }
 
 
@@ -202,7 +200,7 @@ void listarOperations(Operation *op){
 
 
 //TODO: acabar o armazenamento  
-//BUG: Nao guarda direito so guarda zeros
+  
 //ARMAZENAR JOBS
 Operation* pullFicheiro(Operation *op, int idCont) {
 	Operation *opP;
