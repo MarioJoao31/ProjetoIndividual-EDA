@@ -43,7 +43,7 @@ void medMaxJob(Job *jp,Operation *op);
 Operation *inserirOperacoes(Operation *op, int id, int maq[MAXMAQUINAS], int temp[MAXTEMPO],int size);
 Operation* procuraOperacoes(Operation* op, int id);
 Operation* removerOperacoes(Operation * op, int id);
-Operation* alteraOperacao(Operation* op, int id,int* maq,int* temp);
+Operation* alteraOperacao(Operation* op, int id,int* maq,int* temp, int size);
 void listarOperations(Operation *op);
 int quantidadeOperacoes(Operation * op);
 int minOperacao(Operation *op, int id);

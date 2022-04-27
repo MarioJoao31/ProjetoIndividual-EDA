@@ -17,7 +17,7 @@ int main(){
     int tt[3]={6,5,5};
     int kk[1]={3};
     int ii[1]={5};
-    int hh[2]={6,6};
+    int hh[3]={6,6,6};
 
     
     do{
@@ -25,29 +25,33 @@ int main(){
         switch(opcao){
             case 1:
                 //inserir Job
-                printf("A inserir jobs...\n");
+                
                 jobs=inserirJobs(jobs,1,aa);
 
                 operacoes= inserirOperacoes(operacoes,1,bb,cc,3);
                 operacoes= inserirOperacoes(operacoes,2,rr,tt,3);   
                 operacoes= inserirOperacoes(operacoes,3,kk,ii,1);
-                
+                printf("Job predefenido inserido com sucesso!\n");
                 break;
             case 2:
                 printf("Quantidade: %d\n", quantidadeJobs(jobs));
                 break;
             case 3:
+                system("clear");
                 listarJobs(jobs);
                 break;
             case 4:
+                system("clear");
                 printf("###### remover operação #####\n\n");
                 removerOperacoes(operacoes,2);
                 break;
             case 5:
+                system("clear");
                 printf("###### Alterar Operação #####\n\n");
-                alteraOperacao(operacoes,3,hh,bb);
+                alteraOperacao(operacoes,3,hh,bb,3);
                 break;
             case 6:
+                system("clear");
                 //insere e depois lista
                 //tenho de passar arrays no parametros para maquinas e tempo 
                 listarOperations(operacoes);
@@ -58,14 +62,17 @@ int main(){
                 //
                 break;
             case 8:
+                system("clear");
                 printf("###### tempo minimo do job ######\n");
                 medMinJob(jobs,operacoes);
                 break;
             case 9:
-                printf("###### tempo minimo do job ######\n");
+                system("clear");
+                printf("###### tempo maximo do job ######\n");
                 medMaxJob(jobs,operacoes);
                 break;
             case 10:
+                system("clear");
                 // vai ler ao ficheiro
                 printf("Puxa os dados do ficheiro\n");
                 operacoes = pullFicheiro(operacoes, idCount);

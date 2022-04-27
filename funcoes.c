@@ -124,21 +124,19 @@ Operation* procuraOperacoes(Operation* op, int id){
 
 
 
-Operation* alteraOperacao(Operation* op, int id,int* maq,int* temp){
+Operation* alteraOperacao(Operation* op, int id,int* maq,int* temp,int size){
   Operation* aux = procuraOperacoes(op, id);
   if(aux != NULL){
+    aux->sizeMT=size;
     // insere as maquinas de novo
-    int sizearraymaq= sizeof(maq);
     // passa de um arrey para o outro /maquina/
-    for(int i=0; i<sizearraymaq;i++){
+    for(int i=0; i<size;i++){
     aux->maquina[i]=maq[i];
     }
 
-    //insere o tempo de novo 
-    int sizearraytemp= sizeof(temp);
     // passa de um arrey para o outro /maquina/
-    for(int i=0; i<sizearraytemp;i++){
-    aux->tempo[i]=temp[i];
+    for(int j=0; j<size;j++){
+    aux->tempo[j]=temp[j];
     }
 
   }
@@ -171,7 +169,7 @@ void listarOperations(Operation *op){
     //lista as maquinas que se pode usar 
     printf(" Lista   de  Maquinas:(");
     for(int j=0; j<op->sizeMT;j++){  
-      if(j == op->sizeMT){
+      if(j+2 > op->sizeMT){
         printf("%d", op->maquina[j]);
         break;
       }else
@@ -237,7 +235,8 @@ Operation* pullFicheiro(Operation *op, int idCont) {
 						i++;
 					}
 				}
-
+        idCont = quantidadeOperacoes(op);
+        
 				idCont++;
 				ot->id = idCont;
         ot->sizeMT = cont;
@@ -287,7 +286,6 @@ int menu(){
         printf("4 - Remover operação\n");
         printf("5 - Alterar operação\n");
         printf("6 - Listar operações\n");
-        printf("7 - Guardar \n\n");
         printf("8 - Media minima por job\n");
         printf("9 - Media maxima por job\n");
         printf("10 - Pull dados do ficheiro\n");
@@ -345,7 +343,6 @@ int minOperacao(Operation *op, int id){
   int temp=0;
   //verifica se é null
   if(aux!=NULL){
-    printf("%d",op->sizeMT);
     //le todos os tempos e guarda o maximo
     for(int i=0;i<op->sizeMT;i++){
       if(aux->tempo[i] < min){
@@ -365,12 +362,10 @@ int maxOperacao(Operation *op, int id){
   Operation* aux = procuraOperacoes(op, id);
   int max=0;
   int temp=0;
+  
   //ler todos os tempos 
 
-
-
   if(aux!=NULL){
-    printf("%d",op->sizeMT);
     for(int i=0;i<op->sizeMT;i++){
       if(aux->tempo[i] > max){
         max=aux->maquina[i];
