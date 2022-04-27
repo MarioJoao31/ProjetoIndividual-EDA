@@ -45,11 +45,27 @@ int main(){
                 printf("###### remover operação #####\n\n");
                 removerOperacoes(operacoes,2);
                 break;
-            case 5:
+            case 5:{
+                int idAlterar=0;
                 system("clear");
                 printf("###### Alterar Operação #####\n\n");
-                alteraOperacao(operacoes,3,hh,bb,3);
+                printf("###Inserir operações###\n");
+                printf("Qual id da operação:");
+                scanf("%d",&idAlterar);
+                printf("Quantas maquinas:");
+                scanf("%d",&qt);
+
+                int maq[qt];
+                int temp[qt];
+                for(int i=0; i<qt; i++){
+                    printf("\nMaquina numero:");
+                    scanf("%d",&maq[i]);
+                    printf("tempo da maquina %d:",i+1);
+                    scanf("%d",&temp[i]);
+                }
+                alteraOperacao(operacoes,idAlterar,maq,temp,qt);
                 break;
+            }
             case 6:
                 system("clear");
                 //insere e depois lista
