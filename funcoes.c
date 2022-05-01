@@ -328,7 +328,7 @@ void medMaxJob(Job *jp,Operation *op){
       if(jp->operacao[j]==0) break;
       printf("Operação nº:%d\n",jp->operacao[j]);
 
-     //inserir aqui a funcao de retornar a operacao max 
+       //inserir aqui a funcao de retornar a operacao max 
       max = maxOperacao(op,jp->operacao[j]);
       incre += max;
     }
@@ -375,7 +375,7 @@ int maxOperacao(Operation *op, int id){
     }
   } 
 
-  printf("Maquina nº%d é a mais rapida\n",max+1);
+  printf("Maquina nº%d é a mais lenta\n",max+1);
   return (temp);  
 } 
 

@@ -40,11 +40,15 @@ int main(){
                 system("clear");
                 listarJobs(jobs);
                 break;
-            case 4:
+            case 4:{
+                int idRemover=0;
                 system("clear");
                 printf("###### remover operação #####\n\n");
-                removerOperacoes(operacoes,2);
+                printf("Qual id da operação:");
+                scanf("%d",&idRemover);
+                removerOperacoes(operacoes,idRemover);
                 break;
+            }    
             case 5:{
                 int idAlterar=0;
                 system("clear");
