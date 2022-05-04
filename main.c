@@ -8,7 +8,9 @@ int main(){
 
 
     int opcao;
-    int idCount=0;
+    int qtOpCiclo;
+    int idCountOp=0;
+    int idCountJb=0;
     int qt=0;
     int aa[MAXOPERATION]={1,2,3};
     int bb[3]={1,2,3};
@@ -24,13 +26,27 @@ int main(){
         opcao = menu();
         switch(opcao){
             case 1:
+                
                 //inserir Job
+                printf("####Inserir Job####\n");
+                idCountJb=quantidadeJobs(jobs);
+                printf("Job nº%d\n",idCountJb);
+
+                //ler operações
+                printf("Quantas operações deseja?\n");
+                scanf("%d",&qtOpCiclo);
+                for(int i=0; i<qtOpCiclo; i++){
+                    listarOperations(operacoes);
+                    printf("Qual operação deseja:");
+
+                }
+               
                 
                 jobs=inserirJobs(jobs,1,aa);
 
-                operacoes= inserirOperacoes(operacoes,1,bb,cc,3);
-                operacoes= inserirOperacoes(operacoes,2,rr,tt,3);   
-                operacoes= inserirOperacoes(operacoes,3,kk,ii,1);
+                //operacoes= inserirOperacoes(operacoes,1,bb,cc,3);
+                //operacoes= inserirOperacoes(operacoes,2,rr,tt,3);   
+                //operacoes= inserirOperacoes(operacoes,3,kk,ii,1);
                 printf("Job predefenido inserido com sucesso!\n");
                 break;
             case 2:
@@ -95,15 +111,19 @@ int main(){
                 system("clear");
                 // vai ler ao ficheiro
                 printf("Puxa os dados do ficheiro\n");
-                operacoes = pullFicheiro(operacoes, idCount);
+                operacoes = pullFicheiro(operacoes, idCountOp);
                 break; 
             case 11:{
                 //ve quantas operacoes tem inseridas para ter o id correto
-                idCount=quantidadeOperacoes(operacoes);
-                idCount++;
+                
                 //inserir operacoes e ver a quantidade de maquinas
                 system("clear");
                 printf("###Inserir operações###\n");
+                
+                //para ir buscar a quantidade de op
+                idCountOp=quantidadeOperacoes(operacoes);
+                idCountOp++;
+
                 printf("Quantas maquinas:");
                 scanf("%d",&qt);
 
@@ -116,7 +136,7 @@ int main(){
                     scanf("%d",&temp[i]);
                 }
                 
-                operacoes=inserirOperacoes(operacoes,idCount,maq,temp,qt);
+                operacoes=inserirOperacoes(operacoes,idCountOp,maq,temp,qt);
 
                 break; 
             }  
