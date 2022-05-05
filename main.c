@@ -28,14 +28,13 @@ int main(){
                 idCountJb=quantidadeJobs(jobs);
                 printf("Job nº%d\n",idCountJb);
 
-
                 //condicao se nao houver operacoes nao deixar adicionar job
                 if(quantidadeOperacoes(operacoes)==0){
                     printf("Não existe operações insira operações \npara poder inserir um job \n\n");
 
                     printf("Deseja adicionar operações? Y/N:");
-                    scanf("%c",cc);
-                    if(strcmp(cc,"Y")==1 || strcmp(cc,"y")==1){
+                    scanf("%s",cc);
+                    if(strcmp(cc,"Y")==0 || strcmp(cc,"y")==0){
                         goto insOpe;
                     }else{
                         break;
@@ -104,7 +103,7 @@ int main(){
             case 7:
                 //guardar ainda nao fiz
                 //TODO:Ainda não fiz e nao funciona
-                //
+                saveFicheiro();
                 break;
             case 8:
                 system("clear");
@@ -127,6 +126,7 @@ int main(){
                 
                 //inserir operacoes e ver a quantidade de maquinas
                 system("clear");
+                //se if no case 1 for true vem para aqui!!!
                 insOpe:
                 printf("###Inserir operações###\n");
                 

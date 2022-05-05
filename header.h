@@ -32,6 +32,7 @@ typedef struct op{
 
 //JOBS
 Job *inserirJobs(Job *jp, int id, int operacao[MAXOPERATION]);
+Job *removerJobs(Job *jp, int id);
 void listarJobs(Job *jp);
 int quantidadeJobs(Job *jp);
 void guardarJobs(Job *jp);
@@ -52,5 +53,6 @@ int maxOperacao(Operation *op, int id);
 //OUTROS
 int menu();
 Operation* pullFicheiro(Operation *op, int idCont);
+void saveFicheiro(Job *jp,Operation *op);
 
 #endif

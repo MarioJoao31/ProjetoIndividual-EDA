@@ -47,6 +47,31 @@ Job* inserirJobs(Job * jp, int id, int* operacao){
   else return(jp);
 }
 
+//BUG: chekar se esta a funcionar se eliminar o primeiro
+Job *removerJobs(Job *jp, int id){
+  //se a lista ficar vazia 
+  if( jp == NULL) return NULL;
+
+
+  if(jp->id == id){
+    Job* aux = jp;
+    jp=jp->seguinte;
+    free(aux);
+  }else{
+    Job *aux=jp;
+    Job *auxAnt = aux;
+    while(aux && aux->id != id){
+      auxAnt=aux;
+      aux = aux->seguinte;
+    }
+    if(aux != NULL){
+      auxAnt->seguinte= aux->seguinte;
+      free(aux);
+    }
+  }
+  return jp;
+}
+
 //operação 
 Operation* inserirOperacoes(Operation * op, int id, int* maq, int* temp, int size){
   Operation *ot = (Operation*) malloc(sizeof(Operation));
@@ -83,6 +108,7 @@ Operation* inserirOperacoes(Operation * op, int id, int* maq, int* temp, int siz
 
 
 
+//BUG:erro se remover o primeiro 
 Operation* removerOperacoes(Operation * op, int id){
   
   if( op == NULL) return NULL;
@@ -197,9 +223,21 @@ void listarOperations(Operation *op){
 }
 
 
-//TODO: acabar o armazenamento  
-  
-//ARMAZENAR JOBS
+
+//BUG: tenho de deixar um linha em branco no final do ficheiro
+//ARMAZENAMENTO
+void saveFicheiro(){
+  FILE *f_SAVE= fopen("data.txt","a");
+  if(! f_SAVE) printf("O Ficheiro não abriu corretamente!");
+  //TODO: acabar de fazer o guardar com o fputs
+  char data[10]="olaaa";
+  fputs(data, f_SAVE);
+
+  //fecha o ficheiro
+  fclose(f_SAVE);
+
+}
+
 Operation* pullFicheiro(Operation *op, int idCont) {
 	Operation *opP;
 	FILE *f_JOB = fopen("data.txt","r");
@@ -274,22 +312,20 @@ Operation* pullFicheiro(Operation *op, int idCont) {
 
 
 //MENU
-
 int menu(){
     int opcao;
 
     do{
         printf("---------MENU-------\n");
-        printf("1 - Inserir job com operações\n");
+        printf("1 - Inserir job com operações \t12 - Eliminar job\n");
         printf("2 - Quantidade de jobs\n");
         printf("3 - Listar jobs\n");
-        printf("4 - Remover operação\n");
+        printf("4 - Remover operação \t11 - Inserir so operações\n");
         printf("5 - Alterar operação\n");
         printf("6 - Listar operações\n");
-        printf("8 - Media minima por job\n");
-        printf("9 - Media maxima por job\n");
-        printf("10 - Pull dados do ficheiro\n");
-        printf("11 - Inserir so operações\n");
+        printf("8 - Media minima por job \t9 - Media maxima por job\n");
+
+        printf("10 - Pull dados do ficheiro\t7 - Guardar no ficheiro\n");
         printf("0 - Sair\n");
         printf("Opcao:");
         scanf("%d",&opcao); 
