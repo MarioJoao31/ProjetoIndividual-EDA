@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "header.h"
 
 int main(){
@@ -11,6 +12,7 @@ int main(){
     int qtOpCiclo;
     int idCountOp=0;
     int idCountJb=0;
+    char cc[1];
     int qt=0;
     int aa[MAXOPERATION]={};
     
@@ -30,8 +32,17 @@ int main(){
                 //condicao se nao houver operacoes nao deixar adicionar job
                 if(quantidadeOperacoes(operacoes)==0){
                     printf("Não existe operações insira operações \npara poder inserir um job \n\n");
-                    break;
+
+                    printf("Deseja adicionar operações? Y/N:");
+                    scanf("%c",cc);
+                    if(strcmp(cc,"Y")==1 || strcmp(cc,"y")==1){
+                        goto insOpe;
+                    }else{
+                        break;
+                    }
+                    
                 }
+
                 printf("Quantas operações deseja?\n");
                 scanf("%d",&qtOpCiclo);
                 for(int i=0; i<qtOpCiclo; i++){
@@ -116,6 +127,7 @@ int main(){
                 
                 //inserir operacoes e ver a quantidade de maquinas
                 system("clear");
+                insOpe:
                 printf("###Inserir operações###\n");
                 
                 //para ir buscar a quantidade de op
