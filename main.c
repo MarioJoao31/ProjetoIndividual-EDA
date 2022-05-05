@@ -12,14 +12,8 @@ int main(){
     int idCountOp=0;
     int idCountJb=0;
     int qt=0;
-    int aa[MAXOPERATION]={1,2,3};
-    int bb[3]={1,2,3};
-    int cc[5]={7,4,9};
-    int rr[3]={2,6,5};
-    int tt[3]={6,5,5};
-    int kk[1]={3};
-    int ii[1]={5};
-    int hh[3]={6,6,6};
+    int aa[MAXOPERATION]={};
+    
 
     
     do{
@@ -32,18 +26,22 @@ int main(){
                 idCountJb=quantidadeJobs(jobs);
                 printf("Job nº%d\n",idCountJb);
 
-                //ler operações
+
+                //condicao se nao houver operacoes nao deixar adicionar job
+                if(quantidadeOperacoes(operacoes)==0){
+                    printf("Não existe operações insira operações \npara poder inserir um job \n\n");
+                    break;
+                }
                 printf("Quantas operações deseja?\n");
                 scanf("%d",&qtOpCiclo);
                 for(int i=0; i<qtOpCiclo; i++){
                     listarOperations(operacoes);
                     printf("Qual operação deseja:");
-
+                    scanf("%d",&aa[i]);
                 }
-               
-                
-                jobs=inserirJobs(jobs,1,aa);
-
+                //inserir com tudo 
+                jobs=inserirJobs(jobs,idCountJb,aa);
+                idCountJb++;
                 //operacoes= inserirOperacoes(operacoes,1,bb,cc,3);
                 //operacoes= inserirOperacoes(operacoes,2,rr,tt,3);   
                 //operacoes= inserirOperacoes(operacoes,3,kk,ii,1);
