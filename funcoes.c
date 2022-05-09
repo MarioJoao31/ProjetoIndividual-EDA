@@ -226,8 +226,8 @@ void listarOperations(Operation *op){
 
 //BUG: tenho de deixar um linha em branco no final do ficheiro
 //ARMAZENAMENTO
-void saveFicheiro(){
-  FILE *f_SAVE= fopen("data.txt","a");
+void saveFicheiro(Job *jp, Operation *op){
+  FILE *f_SAVE= fopen("table.html","a");
   if(! f_SAVE) printf("O Ficheiro não abriu corretamente!");
   //TODO: acabar de fazer o guardar com o fputs
   char data[10]="olaaa";
@@ -316,16 +316,17 @@ int menu(){
     int opcao;
 
     do{
-        printf("---------MENU-------\n");
-        printf("1 - Inserir job com operações \t12 - Eliminar job\n");
-        printf("2 - Quantidade de jobs\n");
+        printf("-------------------------------MENU--------------------------------\n");
+        printf("1 - Inserir job com operações      \t11 - Inserir so operações\n");
+        printf("2 - Quantidade de jobs             \t12 - Eliminar job\n");
         printf("3 - Listar jobs\n");
-        printf("4 - Remover operação \t11 - Inserir so operações\n");
+        printf("4 - Remover operação\n");
         printf("5 - Alterar operação\n");
         printf("6 - Listar operações\n");
-        printf("8 - Media minima por job \t9 - Media maxima por job\n");
-
-        printf("10 - Pull dados do ficheiro\t7 - Guardar no ficheiro\n");
+        printf("7 - Guardar no ficheiro\n");
+        printf("8 - Media minima por job\n");
+        printf("9 - Media maxima por job\n");
+        printf("10 - Pull dados do ficheiro\n");
         printf("0 - Sair\n");
         printf("Opcao:");
         scanf("%d",&opcao); 

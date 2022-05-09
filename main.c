@@ -35,7 +35,24 @@ int main(){
                     printf("Deseja adicionar operações? Y/N:");
                     scanf("%s",cc);
                     if(strcmp(cc,"Y")==0 || strcmp(cc,"y")==0){
-                        goto insOpe;
+                        printf("###Inserir operações###\n");
+                        //para ir buscar a quantidade de op
+                        idCountOp=quantidadeOperacoes(operacoes);
+                        idCountOp++;
+
+                        printf("Quantas maquinas:");
+                        scanf("%d",&qt);
+
+                        int maq[qt];
+                        int temp[qt];
+                        for(int i=0; i<qt; i++){
+                            printf("\nMaquina numero:");
+                            scanf("%d",&maq[i]);
+                            printf("tempo da maquina %d:",i+1);
+                            scanf("%d",&temp[i]);
+                        }
+                        
+                        operacoes=inserirOperacoes(operacoes,idCountOp,maq,temp,qt);
                     }else{
                         break;
                     }
@@ -46,8 +63,10 @@ int main(){
                 scanf("%d",&qtOpCiclo);
                 for(int i=0; i<qtOpCiclo; i++){
                     listarOperations(operacoes);
+                    //TODO: verificação se operação existe e não esta repetida
                     printf("Qual operação deseja:");
                     scanf("%d",&aa[i]);
+                    
                 }
                 //inserir com tudo 
                 jobs=inserirJobs(jobs,idCountJb,aa);
@@ -103,7 +122,7 @@ int main(){
             case 7:
                 //guardar ainda nao fiz
                 //TODO:Ainda não fiz e nao funciona
-                saveFicheiro();
+                saveFicheiro(jobs,operacoes);
                 break;
             case 8:
                 system("clear");
@@ -127,7 +146,7 @@ int main(){
                 //inserir operacoes e ver a quantidade de maquinas
                 system("clear");
                 //se if no case 1 for true vem para aqui!!!
-                insOpe:
+
                 printf("###Inserir operações###\n");
                 
                 //para ir buscar a quantidade de op
