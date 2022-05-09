@@ -61,12 +61,12 @@ int main(){
                 printf("Quantidade: %d\n", quantidadeJobs(jobs));
                 break;
             case 3:
-                system("clear");
+                system("cls");
                 listarJobs(jobs);
                 break;
             case 4:{
                 int idRemover=0;
-                system("clear");
+                system("cls");
                 printf("###### remover operação #####\n\n");
                 printf("Qual id da operação:");
                 scanf("%d",&idRemover);
@@ -75,7 +75,7 @@ int main(){
             }    
             case 5:{
                 int idAlterar=0;
-                system("clear");
+                system("cls");
                 printf("###### Alterar Operação #####\n\n");
                 printf("###Inserir operações###\n");
                 printf("Qual id da operação:");
@@ -95,7 +95,7 @@ int main(){
                 break;
             }
             case 6:
-                system("clear");
+                system("cls");
                 //insere e depois lista
                 //tenho de passar arrays no parametros para maquinas e tempo 
                 listarOperations(operacoes);
@@ -103,20 +103,20 @@ int main(){
             case 7:
                 //guardar ainda nao fiz
                 //TODO:Ainda não fiz e nao funciona
-                saveFicheiro();
+                saveFicheiro(jobs, operacoes);
                 break;
             case 8:
-                system("clear");
+                system("cls");
                 printf("###### tempo minimo do job ######\n");
                 medMinJob(jobs,operacoes);
                 break;
             case 9:
-                system("clear");
+                system("cls");
                 printf("###### tempo maximo do job ######\n");
                 medMaxJob(jobs,operacoes);
                 break;
             case 10:
-                system("clear");
+                system("cls");
                 // vai ler ao ficheiro
                 printf("Puxa os dados do ficheiro\n");
                 operacoes = pullFicheiro(operacoes, idCountOp);
@@ -125,7 +125,7 @@ int main(){
                 //ve quantas operacoes tem inseridas para ter o id correto
                 
                 //inserir operacoes e ver a quantidade de maquinas
-                system("clear");
+                system("cls");
                 //se if no case 1 for true vem para aqui!!!
                 insOpe:
                 printf("###Inserir operações###\n");
