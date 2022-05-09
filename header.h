@@ -49,6 +49,7 @@ void listarOperations(Operation *op);
 int quantidadeOperacoes(Operation * op);
 int minOperacao(Operation *op, int id);
 int maxOperacao(Operation *op, int id);
+int procuraOperacoesInt(Operation* op, int id);
 
 //OUTROS
 int menu();

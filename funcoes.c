@@ -415,5 +415,17 @@ int maxOperacao(Operation *op, int id){
   printf("Maquina nº%d é a mais lenta\n",max+1);
   return (temp);  
 } 
-
+int procuraOperacoesInt(Operation *op, int id){
+  if(op==NULL) return 0;
+  else{
+    Operation* aux = op;
+    while(aux != NULL){
+      if(aux->id == id){
+        return 1;
+      }
+      aux= aux->seguinte;
+    }
+    return 0;
+  }
+}
 

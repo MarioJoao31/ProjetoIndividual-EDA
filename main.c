@@ -15,6 +15,7 @@ int main(){
     char cc[1];
     int qt=0;
     int aa[MAXOPERATION]={};
+    int verificacao;
     
 
     
@@ -66,6 +67,14 @@ int main(){
                     //TODO: verificação se operação existe e não esta repetida
                     printf("Qual operação deseja:");
                     scanf("%d",&aa[i]);
+                    verificacao=procuraOperacoesInt(operacoes, aa[i]);
+                    while (verificacao==0) 
+                    {
+                        printf("Nao existe essa operacao");
+                        printf("Qual operação deseja:");
+                        scanf("%d",&aa[i]);
+                        verificacao=procuraOperacoesInt(operacoes, aa[i]);
+                    }
                     
                 }
                 //inserir com tudo 
