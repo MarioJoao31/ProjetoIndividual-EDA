@@ -12,10 +12,11 @@ int main(){
     int qtOpCiclo;
     int idCountOp=0;
     int idCountJb=0;
+    int verificacao;
+    int idremover;
     char cc[1];
     int qt=0;
     int aa[MAXOPERATION]={};
-    int verificacao;
     
 
     
@@ -64,7 +65,8 @@ int main(){
                 scanf("%d",&qtOpCiclo);
                 for(int i=0; i<qtOpCiclo; i++){
                     listarOperations(operacoes);
-                    //TODO: verificação se operação existe e não esta repetida
+
+
                     printf("Qual operação deseja:");
                     scanf("%d",&aa[i]);
                     verificacao=procuraOperacoesInt(operacoes, aa[i]);
@@ -78,7 +80,7 @@ int main(){
                     
                 }
                 //inserir com tudo 
-                jobs=inserirJobs(jobs,idCountJb,aa);
+                jobs=inserirJobs(jobs,idCountJb,aa,qtOpCiclo);
                 idCountJb++;
                 //operacoes= inserirOperacoes(operacoes,1,bb,cc,3);
                 //operacoes= inserirOperacoes(operacoes,2,rr,tt,3);   
@@ -130,7 +132,7 @@ int main(){
                 break;
             case 7:
                 //guardar ainda nao fiz
-                //TODO:Ainda não fiz e nao funciona
+                //TODO:Ainda Esta acabado mas funciona 
                 saveFicheiro(jobs,operacoes);
                 break;
             case 8:
@@ -178,6 +180,14 @@ int main(){
 
                 break; 
             }  
+            case 12:
+            //TODO: acabar remover 
+            //BUG: nao executa a parte de remover as operações !!!  direito
+            //adicionar changes 
+                printf("Qual job deseja remover:");
+                scanf("%d",&idremover);
+                jobs=removerJobs(jobs,operacoes,2);
+            break;
             default:
                 break;
         }

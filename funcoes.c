@@ -28,7 +28,7 @@ int quantidadeOperacoes(Operation * op) {
 
 //INSERIR
 
-Job* inserirJobs(Job * jp, int id, int* operacao){
+Job* inserirJobs(Job * jp, int id, int* operacao, int size){
 
   Job *jb = (Job*) malloc(sizeof(Job));
 
@@ -40,7 +40,7 @@ Job* inserirJobs(Job * jp, int id, int* operacao){
     for(int h=0;h<sizearrayoperacao;h++){
       jb->operacao[h] = operacao[h] ;
     }
-    
+    jb->sizeOP = size;
     jb->seguinte = jp;
     return(jb);
   }
@@ -48,11 +48,10 @@ Job* inserirJobs(Job * jp, int id, int* operacao){
 }
 
 //BUG: chekar se esta a funcionar se eliminar o primeiro
-Job *removerJobs(Job *jp, int id){
+Job *removerJobs(Job *jp, Operation *op, int id){
   //se a lista ficar vazia 
+  //remove so o job 
   if( jp == NULL) return NULL;
-
-
   if(jp->id == id){
     Job* aux = jp;
     jp=jp->seguinte;
@@ -69,6 +68,36 @@ Job *removerJobs(Job *jp, int id){
       free(aux);
     }
   }
+  
+  //remove operacoes 
+  for (size_t i = 0; i < jp->sizeOP; i++)
+  {
+    if (op->id==jp->operacao[i])
+    {
+      if(op->id == id){
+        Operation* aux =op;
+        op=op->seguinte;
+        free(aux);
+      }
+      else{
+        Operation *aux=op;
+        Operation *auxAnt =aux;
+        while (aux && aux->id != id)
+        {
+          auxAnt=aux;
+          aux = aux->seguinte;
+        }
+        if(aux != NULL){
+          auxAnt->seguinte= aux->seguinte;
+          free(aux);
+        }
+        
+      }
+    }
+    
+  }
+
+  //retorna a lista job 
   return jp;
 }
 
@@ -109,9 +138,20 @@ Operation* inserirOperacoes(Operation * op, int id, int* maq, int* temp, int siz
 
 
 //BUG:erro se remover o primeiro 
-Operation* removerOperacoes(Operation * op, int id){
-  
+Operation* removerOperacoes(Operation *op, int id){
+  printf(" IDDDD :%d",id);
+  if(id == 1 ){
+    //cria uma variavel temporiaria 
+    //aponta o inicio da lista para o apontador seguinte 
+    Operation* aux = op;
+    aux = op->seguinte;
+    
+    return aux;
+  }
   if( op == NULL) return NULL;
+
+  //remover primeiro posição
+  
 
   if(op->id == id){
     Operation* aux = op;
@@ -415,6 +455,9 @@ int maxOperacao(Operation *op, int id){
   printf("Maquina nº%d é a mais lenta\n",max+1);
   return (temp);  
 } 
+
+
+
 int procuraOperacoesInt(Operation *op, int id){
   if(op==NULL) return 0;
   else{
