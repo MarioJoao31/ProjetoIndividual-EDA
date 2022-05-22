@@ -186,6 +186,10 @@ int main(){
                 scanf("%d",&idremover);
                 jobs=removerJobs(jobs,operacoes,idremover);
             break;
+            case 13:
+            
+
+            break;
             default:
                 break;
         }

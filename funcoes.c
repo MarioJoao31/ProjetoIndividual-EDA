@@ -70,33 +70,6 @@ Job *removerJobs(Job *jp, Operation *op, int id){
     }
   }
   
-  //remove operacoes 
-  /*
-  for (size_t i = 0; i < jp->sizeOP; i++)
-  {
-    if (op->id==jp->operacao[i])
-    {
-      if(op->id == id){
-        Operation* aux =op;
-        op=op->seguinte;
-        free(aux);
-      }
-      else{
-        Operation *aux=op;
-        Operation *auxAnt =aux;
-        while (aux && aux->id != id)
-        {
-          auxAnt=aux;
-          aux = aux->seguinte;
-        }
-        if(aux != NULL){
-          auxAnt->seguinte= aux->seguinte;
-          free(aux);
-        }
-      }
-    }  
-  }
-  */
   //retorna a lista job 
   return jp;
 }
@@ -359,7 +332,7 @@ int menu(){
         printf("-------------------------------MENU--------------------------------\n");
         printf("1 - Inserir job com operações      \t11 - Inserir so operações\n");
         printf("2 - Quantidade de jobs             \t12 - Eliminar job\n");
-        printf("3 - Listar jobs\n");
+        printf("3 - Listar jobs                    \t13 - Alterar job\n");
         printf("4 - Remover operação\n");
         printf("5 - Alterar operação\n");
         printf("6 - Listar operações\n");
@@ -470,5 +443,9 @@ int procuraOperacoesInt(Operation *op, int id){
     }
     return 0;
   }
+}
+
+Jobs* alterarjobs(Job * jp){
+  
 }
 
