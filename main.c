@@ -17,56 +17,56 @@ int main(){
     char cc[1];
     int qt=0;
     int aa[MAXOPERATION]={};
-    
+    int qtoperacoes;
 
     
     do{
         opcao = menu();
         switch(opcao){
             case 1:
-                
+                system("clear");
                 //inserir Job
                 printf("####Inserir Job####\n");
                 idCountJb=quantidadeJobs(jobs);
+                idCountJb++;
                 printf("Job nº%d\n",idCountJb);
 
                 //condicao se nao houver operacoes nao deixar adicionar job
                 if(quantidadeOperacoes(operacoes)==0){
                     printf("Não existe operações insira operações \npara poder inserir um job \n\n");
-
                     printf("Deseja adicionar operações? Y/N:");
                     scanf("%s",cc);
+
                     if(strcmp(cc,"Y")==0 || strcmp(cc,"y")==0){
                         printf("###Inserir operações###\n");
-                        //para ir buscar a quantidade de op
-                        idCountOp=quantidadeOperacoes(operacoes);
-                        idCountOp++;
+                        printf("Quantas Operações:");
+                        scanf("%d",&qtoperacoes);
 
-                        printf("Quantas maquinas:");
-                        scanf("%d",&qt);
-
-                        int maq[qt];
-                        int temp[qt];
-                        for(int i=0; i<qt; i++){
-                            printf("\nMaquina numero:");
-                            scanf("%d",&maq[i]);
-                            printf("tempo da maquina %d:",i+1);
-                            scanf("%d",&temp[i]);
-                        }
-                        
-                        operacoes=inserirOperacoes(operacoes,idCountOp,maq,temp,qt);
+                        for(int f=0;f<qtoperacoes; f++){
+                             //para ir buscar a quantidade de op
+                            idCountOp=quantidadeOperacoes(operacoes);
+                            idCountOp++;
+                            printf("Quantas maquinas para a operação nº %d:",f+1);
+                            scanf("%d",&qt);
+                            int maq[qt];
+                            int temp[qt];
+                                for(int i=0; i<qt; i++){
+                                    printf("\nMaquina numero:");
+                                    scanf("%d",&maq[i]);
+                                    printf("tempo da maquina %d:",i+1);
+                                    scanf("%d",&temp[i]);
+                                }
+                            operacoes=inserirOperacoes(operacoes,idCountOp,maq,temp,qt);
+                        }   
                     }else{
                         break;
                     }
-                    
                 }
 
                 printf("Quantas operações deseja?\n");
                 scanf("%d",&qtOpCiclo);
                 for(int i=0; i<qtOpCiclo; i++){
                     listarOperations(operacoes);
-
-
                     printf("Qual operação deseja:");
                     scanf("%d",&aa[i]);
                     verificacao=procuraOperacoesInt(operacoes, aa[i]);
@@ -81,7 +81,6 @@ int main(){
                 }
                 //inserir com tudo 
                 jobs=inserirJobs(jobs,idCountJb,aa,qtOpCiclo);
-                idCountJb++;
                 //operacoes= inserirOperacoes(operacoes,1,bb,cc,3);
                 //operacoes= inserirOperacoes(operacoes,2,rr,tt,3);   
                 //operacoes= inserirOperacoes(operacoes,3,kk,ii,1);
@@ -157,9 +156,8 @@ int main(){
                 //inserir operacoes e ver a quantidade de maquinas
                 system("clear");
                 //se if no case 1 for true vem para aqui!!!
-
                 printf("###Inserir operações###\n");
-                
+
                 //para ir buscar a quantidade de op
                 idCountOp=quantidadeOperacoes(operacoes);
                 idCountOp++;
@@ -186,7 +184,7 @@ int main(){
             //adicionar changes 
                 printf("Qual job deseja remover:");
                 scanf("%d",&idremover);
-                jobs=removerJobs(jobs,operacoes,2);
+                jobs=removerJobs(jobs,operacoes,idremover);
             break;
             default:
                 break;

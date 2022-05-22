@@ -52,6 +52,7 @@ Job *removerJobs(Job *jp, Operation *op, int id){
   //se a lista ficar vazia 
   //remove so o job 
   if( jp == NULL) return NULL;
+
   if(jp->id == id){
     Job* aux = jp;
     jp=jp->seguinte;
@@ -70,6 +71,7 @@ Job *removerJobs(Job *jp, Operation *op, int id){
   }
   
   //remove operacoes 
+  /*
   for (size_t i = 0; i < jp->sizeOP; i++)
   {
     if (op->id==jp->operacao[i])
@@ -91,12 +93,10 @@ Job *removerJobs(Job *jp, Operation *op, int id){
           auxAnt->seguinte= aux->seguinte;
           free(aux);
         }
-        
       }
-    }
-    
+    }  
   }
-
+  */
   //retorna a lista job 
   return jp;
 }
