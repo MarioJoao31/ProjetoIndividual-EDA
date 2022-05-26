@@ -7,17 +7,20 @@ int main(){
     Job *jobs = NULL;
     Operation * operacoes = NULL; 
 
-
-    int opcao;
-    int qtOpCiclo;
     int idCountOp=0;
     int idCountJb=0;
-    int verificacao;
-    int idremover;
     char cc[1];
     int qt=0;
     int aa[MAXOPERATION]={};
-    int qtoperacoes;
+    int maq[qt];
+    int temp[qt];
+    int qtoperacoes,
+    idJobAlterar,
+    idremover,
+    verificacao,
+    qtOpCiclo,
+    opcao,
+    idjobIns,idjobRm,idOpRm;
 
     
     do{
@@ -161,12 +164,10 @@ int main(){
                 //para ir buscar a quantidade de op
                 idCountOp=quantidadeOperacoes(operacoes);
                 idCountOp++;
-
                 printf("Quantas maquinas:");
                 scanf("%d",&qt);
 
-                int maq[qt];
-                int temp[qt];
+                
                 for(int i=0; i<qt; i++){
                     printf("\nMaquina numero:");
                     scanf("%d",&maq[i]);
@@ -186,9 +187,42 @@ int main(){
                 scanf("%d",&idremover);
                 jobs=removerJobs(jobs,operacoes,idremover);
             break;
-            case 13:
-            
+            case 13:{
+                system("clear");
+                printf("### inserir OP em JP  ###\n");
+                printf("Inserir operação primeiro\n");
 
+                idCountOp=quantidadeOperacoes(operacoes);
+                idCountOp++;
+                printf("Quantas maquinas:");
+                scanf("%d",&qt);
+
+                
+                for(int i=0; i<qt; i++){
+                    printf("\nMaquina numero:");
+                    scanf("%d",&maq[i]);
+                    printf("tempo da maquina %d:",i+1);
+                    scanf("%d",&temp[i]);
+                }
+                operacoes=inserirOperacoes(operacoes,idCountOp,maq,temp,qt);
+                
+                system("clear");
+                printf("Em qual job quer adicionar:");
+                scanf("%d",&idjobIns);
+
+                jobs=insOpJp(jobs,idCountOp,idjobIns);
+            }
+            break;
+            case 14:
+                system("clear");
+                printf("### inserir OP em JP  ###\n");
+                listarJobs(jobs);           
+                printf("Em qual job quer remover:");
+                scanf("%d",&idjobRm);
+                printf("Qual operacão quer remover:");
+                scanf("%d",&idOpRm);
+
+                jobs=rmOpJp(jobs,idOpRm,idjobRm);
             break;
             default:
                 break;

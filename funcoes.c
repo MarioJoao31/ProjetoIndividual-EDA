@@ -7,7 +7,6 @@
 
 //ligar ao header para tudo que eu fazer aqui 
 //fica aqui ligado ao main 
-
 int quantidadeJobs(Job * jp) {
   int soma = 0;
   while (jp != NULL) {
@@ -332,7 +331,7 @@ int menu(){
         printf("-------------------------------MENU--------------------------------\n");
         printf("1 - Inserir job com operações      \t11 - Inserir so operações\n");
         printf("2 - Quantidade de jobs             \t12 - Eliminar job\n");
-        printf("3 - Listar jobs                    \t13 - Alterar job\n");
+        printf("3 - Listar jobs                    \t13 - Inserir operação num job\n");
         printf("4 - Remover operação\n");
         printf("5 - Alterar operação\n");
         printf("6 - Listar operações\n");
@@ -344,7 +343,7 @@ int menu(){
         printf("Opcao:");
         scanf("%d",&opcao); 
     }
-    while ((opcao>12)||(opcao<0));
+    while ((opcao>20)||(opcao<0));
     return(opcao);
 }
 
@@ -445,7 +444,45 @@ int procuraOperacoesInt(Operation *op, int id){
   }
 }
 
-Jobs* alterarjobs(Job * jp){
-  
+Job* procuraJob(Job* jp, int id){
+  if(jp==NULL) return NULL;
+  else{
+    Job* aux = jp;
+    while(aux != NULL){
+      if(aux->id == id){
+        return aux;
+      }
+      aux= aux->seguinte;
+    }
+    return NULL;
+  }
 }
 
+
+//inserir operação em job 
+Job *insOpJp(Job * jp,int idOp,int idJp ){
+  Job *aux = procuraJob(jp, idJp);
+
+  //incrementa o tamanho 
+  aux->sizeOP++;
+  aux->operacao[jp->sizeOP-1]=idOp;
+
+  return jp;
+}
+
+
+Job *rmOpJp(Job * jp,int idOp,int idJp ){
+  Job *aux = procuraJob(jp, idJp);
+
+  for(int i=0;i<jp->sizeOP;i++){
+    if(idOp==aux->operacao[i]){
+      //TODO: ACABAR ESTA MERDA 
+      for(int f=i-1;f<jp->sizeOP-1;f++){
+        aux->operacao[i]=aux->operacao[i+1];
+      }
+    }
+  }
+  aux->sizeOP -=1;
+
+  return jp;
+}

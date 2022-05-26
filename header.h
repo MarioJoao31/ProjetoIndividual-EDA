@@ -34,6 +34,9 @@ typedef struct op{
 //JOBS
 Job *inserirJobs(Job *jp, int id, int operacao[MAXOPERATION],int size);
 Job *removerJobs(Job *jp,Operation *op, int id);
+Job *insOpJp(Job * jp, int idOp , int idJp);
+Job* procuraJob(Job* jp, int id);
+Job *rmOpJp(Job * jp,int idOp,int idJp );
 void listarJobs(Job *jp);
 int quantidadeJobs(Job *jp);
 void guardarJobs(Job *jp);
