@@ -18,6 +18,12 @@
 
 //ligar ao header para tudo que eu fazer aqui 
 //fica aqui ligado ao main 
+
+/**
+* @brief le a quantidade de jobs
+* @param [in] jp	lista de jobs
+* @param [out] soma soma dos jobs todos
+*/
 int quantidadeJobs(Job * jp) {
   int soma = 0;
   while (jp != NULL) {
@@ -27,6 +33,11 @@ int quantidadeJobs(Job * jp) {
   return (soma);
 }
 
+/**
+* @brief le a quantidade de operações
+* @param [in] op	Novo contacto
+* @param [out] soma soma de operações
+*/
 int quantidadeOperacoes(Operation * op) {
   int soma = 0;
   while (op != NULL) {
@@ -37,7 +48,14 @@ int quantidadeOperacoes(Operation * op) {
 }
 
 //INSERIR
-
+/**
+* @brief le a quantidade de operações
+* @param [in] jp	lista job
+* @param [in] id	id
+* @param [in] operacao	array de operações
+* @param [in] size	tamanho
+* @param [out] soma soma de operações
+*/
 Job* inserirJobs(Job * jp, int id, int* operacao, int size){
 
   Job *jb = (Job*) malloc(sizeof(Job));
@@ -57,6 +75,13 @@ Job* inserirJobs(Job * jp, int id, int* operacao, int size){
   else return(jp);
 }
 
+/**
+* @brief le a quantidade de operações
+* @param [in] jp	lista job
+* @param [in] op	lista de operações
+* @param [in] id	id
+* @param [out] jp lista com job removido
+*/
 //BUG: chekar se esta a funcionar se eliminar o primeiro
 Job *removerJobs(Job *jp, Operation *op, int id){
   //se a lista ficar vazia 
@@ -84,6 +109,15 @@ Job *removerJobs(Job *jp, Operation *op, int id){
   return jp;
 }
 
+/**
+* @brief le a quantidade de operações
+* @param [in] op	lista operações
+* @param [in] id	id
+* @param [in] maq	array de maquinas
+* @param [in] temp	array de tempo
+* @param [in] size	tamanho
+* @param [out] op lista de operações
+*/
 //operação 
 Operation* inserirOperacoes(Operation * op, int id, int* maq, int* temp, int size){
   Operation *ot = (Operation*) malloc(sizeof(Operation));

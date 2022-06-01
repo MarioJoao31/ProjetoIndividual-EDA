@@ -8,6 +8,8 @@
  * 
  */
 
+#pragma once
+#pragma warning( disable : 4996 ) //evita MSG ERROS: _CRT_SECURE_NO_WARNINGS
 
 #ifndef __TOOLS_H_
 #define __TOOLS_H_
@@ -75,3 +77,5 @@ Operation* pullFicheiro(Operation *op, int idCont);
 void saveFicheiro(Job *jp,Operation *op);
 
 #endif
+
+#pragma endregion
