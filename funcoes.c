@@ -1,3 +1,14 @@
+/**
+ * @file funcoes.c
+ * @author Mário pinto (23506@alunos.ipca.pt)
+ * @brief 
+ * @version 1.0
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>

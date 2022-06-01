@@ -1,3 +1,15 @@
+/**
+ * @file funcoes.c
+ * @author Mário pinto (23506@alunos.ipca.pt)
+ * @brief 
+ * @version 1.0
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -215,7 +227,7 @@ int main(){
             break;
             case 14:
                 system("clear");
-                printf("### inserir OP em JP  ###\n");
+                printf("### Remover OP em JP  ###\n");
                 listarJobs(jobs);           
                 printf("Em qual job quer remover:");
                 scanf("%d",&idjobRm);

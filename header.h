@@ -1,9 +1,24 @@
+/**
+ * @file funcoes.c
+ * @author Mário pinto (23506@alunos.ipca.pt)
+ * @brief 
+ * @version 1.0
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+
 #ifndef __TOOLS_H_
 #define __TOOLS_H_
+
+#include <stdbool.h>
 
 #define MAXOPERATION 6
 #define MAXMAQUINAS 7
 #define MAXTEMPO 60
+#define M 7
+#define T 100
 // este ficheiro serve para fazer as assinaturas
 //  entre os ficheiros
 // este ficheiro so leva as assinaturas nada mais de logica
@@ -12,8 +27,7 @@ struct Job;
 struct Operation;
 
 
-
-typedef struct jp{
+typedef struct jp{2
 	int id;
 	int operacao[7];
 	int sizeOP;
